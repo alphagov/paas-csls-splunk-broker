@@ -10,7 +10,7 @@ import (
 	"context"
 
 	provideriface "github.com/alphagov/paas-service-broker-base/provider"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
 	"github.com/pivotal-cf/brokerapi"
 	"github.com/pivotal-cf/brokerapi/domain"
 )

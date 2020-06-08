@@ -17,7 +17,7 @@ var appPath string
 
 var _ = BeforeSuite(func() {
 	var err error
-	appPath, err = Build("github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/cmd/broker")
+	appPath, err = Build("github.com/alphagov/paas-csls-splunk-broker/cmd/broker")
 	Expect(err).NotTo(HaveOccurred())
 })
 

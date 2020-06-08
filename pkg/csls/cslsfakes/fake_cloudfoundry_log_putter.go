@@ -4,8 +4,8 @@ package cslsfakes
 import (
 	"sync"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/cloudfoundry"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/cloudfoundry"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
 )
 
 type FakeCloudfoundryLogPutter struct {

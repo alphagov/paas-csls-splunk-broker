@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/aws"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/aws"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
 	"github.com/apex/gateway"
 )
 
