@@ -26,7 +26,7 @@ run:
       apt install -y zip
       root=$(pwd)
       mkdir -p builds
-      cd src/cyber-security/components/csls-splunk-broker
+      cd src/
       echo "running unit tests..."
       go test ./...
       echo "building adapter..."

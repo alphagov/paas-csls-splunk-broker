@@ -21,9 +21,14 @@ resources:
   type: git
   source:
     branch: master
+    uri: https://github.com/alphagov/paas-csls-splunk-broker.git
+
+- name: tech-ops
+  icon: github-circle
+  type: git
+  source:
+    branch: master
     uri: https://github.com/alphagov/tech-ops.git
-    paths:
-      - cyber-security/components/csls-splunk-broker
 
 - name: adapter-zip
   icon: file
@@ -104,7 +109,7 @@ jobs:
   - get: src
     trigger: true
   - set_pipeline: csls-splunk-broker
-    file: src/cyber-security/components/csls-splunk-broker/ci/pipeline.yml
+    file: src/ci/pipeline.yml
 
 - name: build
   serial: true
@@ -114,7 +119,7 @@ jobs:
     trigger: true
     passed: [update]
   - task: build
-    file: src/cyber-security/components/csls-splunk-broker/ci/build.yml
+    file: src/ci/build.yml
   - in_parallel:
     - put: adapter-zip
       params:
@@ -134,6 +139,7 @@ jobs:
     - get: src
       passed: [build]
       trigger: true
+    - get: tech-ops
     - get: adapter-zip
       trigger: true
       passed: [build]
@@ -146,13 +152,13 @@ jobs:
   - put: staging
     params:
       env_name: test
-      terraform_source: src/cyber-security/components/csls-splunk-broker/terraform
+      terraform_source: src/terraform/
       vars:
-        adapter_zip_path: ../../../../../adapter-zip/adapter.zip
-        broker_zip_path: ../../../../../broker-zip/broker.zip
-        stub_zip_path: ../../../../../stub-zip/stub.zip
+        adapter_zip_path: ../adapter-zip/adapter.zip
+        broker_zip_path: ../broker-zip/broker.zip
+        stub_zip_path: ../stub-zip/stub.zip
   - task: end-to-end-test
-    file: src/cyber-security/components/csls-splunk-broker/ci/test.yml
+    file: src/ci/test.yml
     vars:
       stub-url: https://test-csls-stub.cloudapps.digital
 
@@ -164,6 +170,7 @@ jobs:
     - get: src
       passed: [test]
       trigger: true
+    - get: tech-ops
     - get: adapter-zip
       trigger: true
       passed: [test]
@@ -176,12 +183,12 @@ jobs:
   - put: production
     params:
       env_name: test
-      terraform_source: src/cyber-security/components/csls-splunk-broker/terraform
+      terraform_source: src/terraform/
       vars:
-        adapter_zip_path: ../../../../../adapter-zip/adapter.zip
-        broker_zip_path: ../../../../../broker-zip/broker.zip
-        stub_zip_path: ../../../../../stub-zip/stub.zip
+        adapter_zip_path: ../adapter-zip/adapter.zip
+        broker_zip_path: ../broker-zip/broker.zip
+        stub_zip_path: ../stub-zip/stub.zip
   - task: end-to-end-test
-    file: src/cyber-security/components/csls-splunk-broker/ci/test.yml
+    file: src/ci/test.yml
     vars:
       stub-url: https://prod-csls-stub.cloudapps.digital
