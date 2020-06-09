@@ -3,8 +3,8 @@ package awsfakes_test
 import (
 	"testing"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/aws"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/aws/awsfakes"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/aws"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/aws/awsfakes"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

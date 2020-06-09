@@ -14,9 +14,9 @@ import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/cloudfoundry"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls/cslsfakes"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/cloudfoundry"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls/cslsfakes"
 )
 
 var _ = Describe("Handler", func() {

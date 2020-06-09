@@ -3,7 +3,7 @@ package cloudfoundry_test
 import (
 	"time"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/cloudfoundry"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/cloudfoundry"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

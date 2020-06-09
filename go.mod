@@ -1,6 +1,6 @@
-module github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker
+module github.com/alphagov/paas-csls-splunk-broker
 
-go 1.12
+go 1.13
 
 require (
 	code.cloudfoundry.org/clock v1.0.0 // indirect

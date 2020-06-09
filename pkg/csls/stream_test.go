@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/aws/awsfakes"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/cloudfoundry"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/aws/awsfakes"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/cloudfoundry"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
 	"github.com/aws/aws-sdk-go/aws"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"

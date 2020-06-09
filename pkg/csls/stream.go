@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	sdk "github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/aws"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/cloudfoundry"
+	sdk "github.com/alphagov/paas-csls-splunk-broker/pkg/aws"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/cloudfoundry"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/kinesis"
 )

@@ -5,7 +5,7 @@ import (
 	. "github.com/onsi/gomega"
 	uuid "github.com/satori/go.uuid"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
 )
 
 var _ = Describe("HMAC", func() {

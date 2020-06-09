@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/cloudfoundry"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/cloudfoundry"
 	uuid "github.com/satori/go.uuid"
 )
 

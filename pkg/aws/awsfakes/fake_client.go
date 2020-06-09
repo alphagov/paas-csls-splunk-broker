@@ -4,7 +4,7 @@ package awsfakes
 import (
 	"sync"
 
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/aws"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/aws"
 	"github.com/aws/aws-sdk-go/service/kinesis"
 )
 

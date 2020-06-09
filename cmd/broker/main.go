@@ -7,7 +7,7 @@ import (
 
 	"code.cloudfoundry.org/lager"
 	"github.com/alphagov/paas-service-broker-base/broker"
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/csls"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
 	"github.com/apex/gateway"
 	"github.com/pivotal-cf/brokerapi/domain"
 	"github.com/pivotal-cf/brokerapi/domain/apiresponses"

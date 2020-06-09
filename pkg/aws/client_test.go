@@ -1,7 +1,7 @@
 package aws_test
 
 import (
-	"github.com/alphagov/tech-ops/cyber-security/components/csls-splunk-broker/pkg/aws"
+	"github.com/alphagov/paas-csls-splunk-broker/pkg/aws"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )
