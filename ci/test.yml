@@ -6,7 +6,7 @@ image_resource:
     repository: python
     tag: 3-buster
 inputs:
-- name: src
+- name: tech-ops
 params:
   SPLUNK_USERNAME: ((csls_concourse_smoketest_splunk_creds_username))
   SPLUNK_PASSWORD: ((csls_concourse_smoketest_splunk_creds_password))
@@ -21,7 +21,7 @@ run:
     - -c
     - |
       echo "installing splunk-query..."
-      cd src/cyber-security/components/splunk-query
+      cd tech-ops/cyber-security/components/splunk-query
       make install-run
       echo "telling stub cloudfoundry app to generate some logs..."
       UUID=$(python -c 'import uuid; print(uuid.uuid1())' | tr -d '\n')
