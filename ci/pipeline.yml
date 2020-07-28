@@ -194,3 +194,5 @@ jobs:
     file: src/ci/test.yml
     vars:
       stub-url: https://prod-csls-stub.cloudapps.digital
+      csls_concourse_smoketest_splunk_creds_username: ((csls_concourse_smoketest_splunk_creds_username))
+      csls_concourse_smoketest_splunk_creds_password: ((csls_concourse_smoketest_splunk_creds_password))
