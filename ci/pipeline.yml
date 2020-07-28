@@ -154,9 +154,9 @@ jobs:
       env_name: test
       terraform_source: src/terraform/
       vars:
-        adapter_zip_path: ../adapter-zip/adapter.zip
-        broker_zip_path: ../broker-zip/broker.zip
-        stub_zip_path: ../stub-zip/stub.zip
+        adapter_zip_path: ../../adapter-zip/adapter.zip
+        broker_zip_path: ../../broker-zip/broker.zip
+        stub_zip_path: ../../stub-zip/stub.zip
   - task: end-to-end-test
     file: src/ci/test.yml
     vars:
@@ -185,9 +185,9 @@ jobs:
       env_name: test
       terraform_source: src/terraform/
       vars:
-        adapter_zip_path: ../adapter-zip/adapter.zip
-        broker_zip_path: ../broker-zip/broker.zip
-        stub_zip_path: ../stub-zip/stub.zip
+        adapter_zip_path: ../../adapter-zip/adapter.zip
+        broker_zip_path: ../../broker-zip/broker.zip
+        stub_zip_path: ../../stub-zip/stub.zip
   - task: end-to-end-test
     file: src/ci/test.yml
     vars:
