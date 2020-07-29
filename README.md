@@ -11,6 +11,8 @@ in Splunk managed by the GDS Cyber Security Team.
 * [Operator guidance for development & deployment][operators]
 * [Architectual overview & design decisions][architecture]
 
+In particular, note [the decisions made when the GOV.UK PaaS team took ownership](docs/adr/ADR007-paas-taking-ownership.md).
+
 ## Owners
 
 This project was a joint effort between Reliability Engineering, GOV.UK PaaS and Cyber Security.
