@@ -1,6 +1,8 @@
 package csls
 
 import (
+	"bytes"
+	"compress/gzip"
 	"encoding/json"
 	"fmt"
 
@@ -67,17 +69,40 @@ func (w *Stream) PutCloudfoundryLog(log cloudfoundry.Log, groupName string) erro
 			},
 		},
 	}
-	b, err := json.Marshal(data)
-	if err != nil {
-		return fmt.Errorf("failed-to-marshal-batch: %s", err)
+
+	var b bytes.Buffer
+	if err := serialzieForKinesis(&data, &b); err != nil {
+		return fmt.Errorf("failed-to-serialize-for-kinesis: %s", err)
 	}
-	_, err = w.AWS.PutRecord(&kinesis.PutRecordInput{
+
+	// Kinesis client transparently base64 encodes `Data`
+	_, err := w.AWS.PutRecord(&kinesis.PutRecordInput{
 		StreamName:   aws.String(w.Name),
-		Data:         b,
+		Data:         b.Bytes(),
 		PartitionKey: aws.String(log.Hostname),
 	})
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+// Serialize to JSON and GZ compress a Log struct. This is the format
+// Cloudwatch uses when subscribing a log group to a Kinesis data
+// stream destination.
+// https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html
+func serialzieForKinesis(log *Log, buffer *bytes.Buffer) error {
+	gz := gzip.NewWriter(buffer)
+
+	enc := json.NewEncoder(gz)
+
+	if err := enc.Encode(*log); err != nil {
+		return fmt.Errorf("failed-to-json-encode `Log`: %s", err)
+	}
+
+	if err := gz.Close(); err != nil {
+		return fmt.Errorf("failed-to-close-gz-writer: %s", err)
+	}
+
 	return nil
 }
