@@ -20,7 +20,7 @@ resources:
   icon: github-circle
   type: git
   source:
-    branch: master
+    branch: main
     uri: https://github.com/alphagov/paas-csls-splunk-broker.git
 
 - name: tech-ops
