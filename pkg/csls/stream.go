@@ -70,15 +70,15 @@ func (w *Stream) PutCloudfoundryLog(log cloudfoundry.Log, groupName string) erro
 		},
 	}
 
-	var b bytes.Buffer
-	if err := serialzieForKinesis(&data, &b); err != nil {
+	var json bytes.Buffer
+	if err := serialzieForKinesis(&data, &json); err != nil {
 		return fmt.Errorf("failed-to-serialize-for-kinesis: %s", err)
 	}
 
 	// Kinesis client transparently base64 encodes `Data`
 	_, err := w.AWS.PutRecord(&kinesis.PutRecordInput{
 		StreamName:   aws.String(w.Name),
-		Data:         b.Bytes(),
+		Data:         json.Bytes(),
 		PartitionKey: aws.String(log.Hostname),
 	})
 	if err != nil {
