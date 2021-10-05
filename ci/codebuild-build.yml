@@ -1,0 +1,32 @@
+version: 0.2
+
+env:
+  shell: bash
+
+phases:
+  build:
+    commands:
+      - set -euo pipefail
+      - echo "setting up build environment..."
+      - apt-get update
+      - apt install -y zip
+      - echo "running unit tests..."
+      - go test ./...
+      - echo "building adapter..."
+      - go build -o adapter ./cmd/adapter
+      - zip /opt/adapter.zip adapter
+      - echo "building broker..."
+      - go build -o broker ./cmd/broker
+      - zip /opt/broker.zip broker
+      - echo "building stub..."
+      - go build -o stub ./cmd/stub
+      - zip /opt/stub.zip stub
+
+artifacts:
+  name: built_zips
+  files:
+    - adapter.zip
+    - stub.zip
+    - broker.zip
+  discard-paths: no
+  base-directory: /opt

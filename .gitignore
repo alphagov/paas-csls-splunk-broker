@@ -1,3 +1,4 @@
 /bin/
 *.coverprofile
 vendor/
+**/.terraform/*
