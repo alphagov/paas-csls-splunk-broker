@@ -11,5 +11,5 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 data "aws_secretsmanager_secret" "dockerhub_creds" {
-  name = "docker_hub_credentials"
+  name = var.docker_hub_credentials
 }
