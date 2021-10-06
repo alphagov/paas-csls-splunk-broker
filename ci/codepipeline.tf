@@ -57,6 +57,7 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
       provider         = "CodeBuild"
       version          = "1"
       run_order        = 1
+      input_artifacts = ["built_zips"] # The CodeBuild project doesn't use this, but we need an input artifact for anything that isn't a "Source" category action
       output_artifacts = ["staging_backend"]
 
       configuration = {
