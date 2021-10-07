@@ -13,3 +13,7 @@ data "aws_ssm_parameter" "cf_username" {
 data "aws_ssm_parameter" "cf_password" {
   name = "/codepipeline/${var.pipeline_name}/cf-password"
 }
+
+data "aws_ssm_parameter" "readonly_private_bucket_name" {
+  name = "/codepipeline/${var.pipeline_name}/readonly_private_bucket_name"
+}

@@ -8,8 +8,8 @@ phases:
     commands:
       - set -euo pipefail
       - echo "setting backend bucket"
-      - echo "bucket = ${BACKEND_BUCKET}" > /opt/backend.tfvars
-      - echo "key = ${BACKEND_STATE_PATH}" >> /opt/backend.tfvars
+      - echo "bucket = \"${BACKEND_BUCKET}\"" > /opt/backend.tfvars
+      - echo "key = \"${BACKEND_STATE_PATH}\"" >> /opt/backend.tfvars
 
 artifacts:
   name: backend

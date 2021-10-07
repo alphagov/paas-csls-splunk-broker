@@ -22,7 +22,7 @@ resource "aws_codebuild_project" "codebuild_create_staging_backend" {
 
     environment_variable {
         name = "BACKEND_BUCKET"
-        value = "TODO"
+        value = data.aws_ssm_parameter.readonly_private_bucket_name.value
     }
 
     environment_variable {
