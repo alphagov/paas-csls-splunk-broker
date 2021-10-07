@@ -8,7 +8,7 @@ module "codebuild-terraform-staging" {
   pipeline_name               = var.pipeline_name
   environment                 = "test"
   docker_hub_credentials      = var.docker_hub_credentials
-  backend_var_file            = "backend.tfvars"
+  backend_var_file            = "staging.tfvars"
   terraform_version           = "0.12.24"
   copy_artifacts              = [
       {
@@ -24,11 +24,6 @@ module "codebuild-terraform-staging" {
       {
         "artifact": "built_zips"
         "source": "stub.zip"
-        "target": "terraform"
-      },
-      {
-        "artifact": "staging_backend"
-        "source": "backend.tfvars"
         "target": "terraform"
       }
   ]

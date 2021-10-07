@@ -51,28 +51,13 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
     name = "DeployAndTestStaging"
 
     action {
-      name = "CreateStagingBackendVars"
-      category = "Build"
-      owner            = "AWS"
-      provider         = "CodeBuild"
-      version          = "1"
-      run_order        = 1
-      input_artifacts = ["built_zips"] # The CodeBuild project doesn't use this, but we need an input artifact for anything that isn't a "Source" category action
-      output_artifacts = ["staging_backend"]
-
-      configuration = {
-        ProjectName = aws_codebuild_project.codebuild_create_staging_backend.name
-      }
-    }
-
-    action {
       name             = "TerraformApply"
       category         = "Build"
       owner            = "AWS"
       provider         = "CodeBuild"
       version          = "1"
       run_order        = 2
-      input_artifacts  = ["paas_csls_splunk_broker", "built_zips", "staging_backend"]
+      input_artifacts  = ["paas_csls_splunk_broker", "built_zips"]
 
       configuration = {
         PrimarySource = "paas_csls_splunk_broker"
@@ -81,7 +66,7 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
           [
             {
               "name": "TF_VAR_target_deployer_role_arn",
-              "value": "arn:aws:iam::103495720024:role/cd-cybersecurity-tools-concourse-worker"
+              "value": "arn:aws:iam::103495720024:role/CodePipelineDeployerRole_103495720024"
             },
             {
               "name": "TF_VAR_target_zone_name",
