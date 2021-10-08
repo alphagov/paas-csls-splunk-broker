@@ -1,5 +1,5 @@
 data "aws_iam_role" "pipeline_role" {
-  name = "CodePipelineExecutionRole"
+  name = var.pipeline_role_name
 }
 
 data "aws_s3_bucket" "artifact_store" {

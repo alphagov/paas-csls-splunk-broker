@@ -1,14 +1,14 @@
 module "codebuild-terraform-staging" {
   source                      = "github.com/alphagov/cyber-security-shared-terraform-modules//codebuild/codebuild_apply_terraform"
-  codebuild_service_role_name = "CodePipelineExecutionRole"
-  deployment_account_id       = var.staging_account
-  deployment_role_name        = var.staging_deployment_role
+  codebuild_service_role_name = var.pipeline_role_name
+  deployment_account_id       = var.pipeline_account
+  deployment_role_name        = var.pipeline_role_name
   terraform_directory         = "terraform"
   codebuild_image             = "gdscyber/cyber-security-cd-base-image:latest"
   pipeline_name               = var.pipeline_name
   environment                 = "test"
   docker_hub_credentials      = var.docker_hub_credentials
-  backend_var_file            = "staging.tfvars"
+  backend_var_file            = "staging-backend.tfvars"
   terraform_version           = "0.12.24"
   copy_artifacts              = [
       {

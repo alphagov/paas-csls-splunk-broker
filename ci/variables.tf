@@ -62,12 +62,12 @@ variable "docker_hub_credentials" {
   default = "docker_hub_credentials"
 }
 
-variable "staging_account" {
+variable "pipeline_account" {
   type = number
-  default = 103495720024
+  default = 670214072732
 }
 
-variable "staging_deployment_role" {
+variable "pipeline_role_name" {
   type = string
-  default = "CodePipelineDeployerRole_103495720024"
+  default = "CodePipelineExecutionRole"
 }
