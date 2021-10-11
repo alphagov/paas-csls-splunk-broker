@@ -21,7 +21,21 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
       configuration = {
         ConnectionArn    = "arn:aws:codestar-connections:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:connection/${var.codestar_connection_id}"
         FullRepositoryId = "alphagov/paas-csls-splunk-broker"
-        BranchName       = "main"
+        BranchName       = "ce-312"
+      }
+    }
+
+    action {
+      name = "TechOpsRepo"
+      category         = "Source"
+      owner            = "AWS"
+      provider         = "CodeStarSourceConnection"
+      version          = "1"
+      output_artifacts = ["tech_ops"]
+      configuration = {
+        ConnectionArn    = "arn:aws:codestar-connections:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:connection/${var.codestar_connection_id}"
+        FullRepositoryId = "alphagov/tech-ops"
+        BranchName       = "master"
       }
     }
   }
@@ -56,7 +70,7 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
       owner            = "AWS"
       provider         = "CodeBuild"
       version          = "1"
-      run_order        = 2
+      run_order        = 1
       input_artifacts  = ["paas_csls_splunk_broker", "built_zips"]
 
       configuration = {
@@ -124,5 +138,19 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
         )
       }
     }
-}
+
+    action {
+      name = "EndToEndTestStaging"
+      category = "Test"
+      owner            = "AWS"
+      provider         = "CodeBuild"
+      version          = "1"
+      run_order        = 2
+      input_artifacts  = ["tech_ops"]
+
+      configuration = {
+        ProjectName = aws_codebuild_project.codebuild_staging_test.name
+      }
+    }
+  }
 }
