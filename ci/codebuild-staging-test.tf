@@ -51,6 +51,13 @@ resource "aws_codebuild_project" "codebuild_staging_test" {
       value   = 8089
     }
   }
+
+  vpc_config {
+    vpc_id             = data.terraform_remote_state.build_vpc.outputs.shared_vpc_id
+    security_group_ids = [data.terraform_remote_state.build_vpc.outputs.shared_vpc_default_security_group_id]
+    subnets            = data.terraform_remote_state.build_vpc.outputs.shared_vpc_public_subnets
+  }
+
   source {
     type            = "CODEPIPELINE"
     buildspec       = file("${path.module}/codebuild-test.yml")
