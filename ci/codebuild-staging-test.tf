@@ -1,6 +1,6 @@
 resource "aws_codebuild_project" "codebuild_staging_test" {
-  name           = "codepipeline-${var.pipeline_name}-staging-test"
-  description    = "Test the staging deployment of the CSLS splunk broker"
+  name        = "codepipeline-${var.pipeline_name}-staging-test"
+  description = "Test the staging deployment of the CSLS splunk broker"
 
   service_role = data.aws_iam_role.pipeline_role.arn
 
@@ -27,28 +27,28 @@ resource "aws_codebuild_project" "codebuild_staging_test" {
     }
 
     environment_variable {
-      name    = "STUB_URL"
-      value   = "https://test-csls-stub.cloudapps.digital"
+      name  = "STUB_URL"
+      value = "https://test-csls-stub.cloudapps.digital"
     }
 
     environment_variable {
-      name    = "SPLUNK_USERNAME"
-      value   = data.aws_ssm_parameter.csls_concourse_smoketest_splunk_creds_username.value
+      name  = "SPLUNK_USERNAME"
+      value = data.aws_ssm_parameter.csls_concourse_smoketest_splunk_creds_username.value
     }
 
     environment_variable {
-      name    = "SPLUNK_PASSWORD"
-      value   = data.aws_ssm_parameter.csls_concourse_smoketest_splunk_creds_password.value
+      name  = "SPLUNK_PASSWORD"
+      value = data.aws_ssm_parameter.csls_concourse_smoketest_splunk_creds_password.value
     }
 
     environment_variable {
-      name    = "SPLUNK_HOST"
-      value   = "gds.splunkcloud.com"
+      name  = "SPLUNK_HOST"
+      value = "gds.splunkcloud.com"
     }
 
     environment_variable {
-      name    = "SPLUNK_PORT"
-      value   = 8089
+      name  = "SPLUNK_PORT"
+      value = 8089
     }
   }
 
@@ -59,8 +59,8 @@ resource "aws_codebuild_project" "codebuild_staging_test" {
   }
 
   source {
-    type            = "CODEPIPELINE"
-    buildspec       = file("${path.module}/codebuild-test.yml")
+    type      = "CODEPIPELINE"
+    buildspec = file("${path.module}/codebuild-test.yml")
   }
 
 }

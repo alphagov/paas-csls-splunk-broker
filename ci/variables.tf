@@ -48,26 +48,26 @@
 # }
 
 variable "pipeline_name" {
-  type = string
+  type    = string
   default = "paas-csls-splunk-broker"
 }
 
 variable "codestar_connection_id" {
-  type = string
+  type    = string
   default = "51c5be90-8c8f-4d32-8be4-18b8f05c802c"
 }
 
 variable "docker_hub_credentials" {
-  type = string
+  type    = string
   default = "docker_hub_credentials"
 }
 
 variable "pipeline_account" {
-  type = number
+  type    = number
   default = 670214072732
 }
 
 variable "pipeline_role_name" {
-  type = string
+  type    = string
   default = "CodePipelineExecutionRole"
 }

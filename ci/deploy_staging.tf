@@ -10,21 +10,21 @@ module "codebuild-terraform-staging" {
   docker_hub_credentials      = var.docker_hub_credentials
   backend_var_file            = "staging-backend.tfvars"
   terraform_version           = "0.12.24"
-  copy_artifacts              = [
-      {
-        "artifact": "built_zips"
-        "source": "adapter.zip"
-        "target": "terraform"
-      },
-      {
-        "artifact": "built_zips"
-        "source": "broker.zip"
-        "target": "terraform"
-      },
-      {
-        "artifact": "built_zips"
-        "source": "stub.zip"
-        "target": "terraform"
-      }
+  copy_artifacts = [
+    {
+      "artifact" : "built_zips"
+      "source" : "adapter.zip"
+      "target" : "terraform"
+    },
+    {
+      "artifact" : "built_zips"
+      "source" : "broker.zip"
+      "target" : "terraform"
+    },
+    {
+      "artifact" : "built_zips"
+      "source" : "stub.zip"
+      "target" : "terraform"
+    }
   ]
 }

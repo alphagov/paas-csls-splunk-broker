@@ -1,6 +1,6 @@
 resource "aws_codebuild_project" "codebuild_build" {
-  name           = "codepipeline-${var.pipeline_name}-build"
-  description    = "Build various zip files for the CSLS Splunk broker"
+  name        = "codepipeline-${var.pipeline_name}-build"
+  description = "Build various zip files for the CSLS Splunk broker"
 
   service_role = data.aws_iam_role.pipeline_role.arn
 
@@ -27,23 +27,23 @@ resource "aws_codebuild_project" "codebuild_build" {
     }
 
     environment_variable {
-      name    = "CGO_ENABLE"
-      value   = 0
+      name  = "CGO_ENABLE"
+      value = 0
     }
 
     environment_variable {
-      name    = "GOOS"
-      value   = "linux"
+      name  = "GOOS"
+      value = "linux"
     }
 
     environment_variable {
-      name    = "GOARCH"
-      value   = "amd64"
+      name  = "GOARCH"
+      value = "amd64"
     }
 
     environment_variable {
-      name    = "DEBIAN_FRONTEND"
-      value   = "noninteractive"
+      name  = "DEBIAN_FRONTEND"
+      value = "noninteractive"
     }
 
     #environment_variable {
@@ -57,8 +57,8 @@ resource "aws_codebuild_project" "codebuild_build" {
     #}
   }
   source {
-    type            = "CODEPIPELINE"
-    buildspec       = file("${path.module}/codebuild-build.yml")
+    type      = "CODEPIPELINE"
+    buildspec = file("${path.module}/codebuild-build.yml")
   }
 
 }
