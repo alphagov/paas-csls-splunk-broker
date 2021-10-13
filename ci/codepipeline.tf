@@ -153,4 +153,97 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
       }
     }
   }
+
+  stage {
+    name = "DeployAndTestProd"
+
+    action {
+      name            = "TerraformApply"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      run_order       = 1
+      input_artifacts = ["paas_csls_splunk_broker", "built_zips"]
+
+      configuration = {
+        PrimarySource = "paas_csls_splunk_broker"
+        ProjectName   = module.codebuild-terraform-prod.project_name
+        EnvironmentVariables = jsonencode(
+          [
+            {
+              "name" : "TF_VAR_target_deployer_role_arn",
+              "value" : "arn:aws:iam::103495720024:role/CodePipelineDeployerRole_885513274347"
+            },
+            {
+              "name" : "TF_VAR_target_zone_name",
+              "value" : "csls.gds-cyber-security.digital."
+            },
+            {
+              "name" : "TF_VAR_target_deployment_name",
+              "value" : "prod"
+            },
+            {
+              "name" : "TF_VAR_csls_deployer_role_arn",
+              "value" : "arn:aws:iam::885513274347:role/CodePipelineDeployerRole_885513274347"
+            },
+            {
+              "name" : "TF_VAR_csls_stream_name",
+              "value" : "csls_data_stream_prod"
+            },
+            {
+              "name" : "TF_VAR_csls_broker_username",
+              "value" : data.aws_ssm_parameter.csls-broker-username.value
+            },
+            {
+              "name" : "TF_VAR_csls_broker_password",
+              "value" : data.aws_ssm_parameter.csls-broker-password.value
+            },
+            {
+              "name" : "TF_VAR_cf_username",
+              "value" : data.aws_ssm_parameter.cf_username.value
+            },
+            {
+              "name" : "TF_VAR_cf_password",
+              "value" : data.aws_ssm_parameter.cf_password.value
+            },
+            {
+              "name" : "TF_VAR_cf_org",
+              "value" : "gds-security"
+            },
+            {
+              "name" : "TF_VAR_cf_space",
+              "value" : "cyber-sec-sandbox"
+            },
+            {
+              "name" : "TF_VAR_adapter_zip_path",
+              "value" : "adapter.zip"
+            },
+            {
+              "name" : "TF_VAR_broker_zip_path",
+              "value" : "broker.zip"
+            },
+            {
+              "name" : "TF_VAR_stub_zip_path",
+              "value" : "stub.zip"
+            },
+          ]
+        )
+      }
+    }
+
+    action {
+      name            = "EndToEndTestProd"
+      category        = "Test"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
+      run_order       = 2
+      input_artifacts = ["tech_ops"]
+
+      configuration = {
+        ProjectName = aws_codebuild_project.codebuild_prod.name
+      }
+    }
+  }
 }
