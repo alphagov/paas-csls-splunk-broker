@@ -21,7 +21,7 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
       configuration = {
         ConnectionArn    = "arn:aws:codestar-connections:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:connection/${var.codestar_connection_id}"
         FullRepositoryId = "alphagov/paas-csls-splunk-broker"
-        BranchName       = "ce-312"
+        BranchName       = "main"
       }
     }
 
