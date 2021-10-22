@@ -71,3 +71,8 @@ variable "pipeline_role_name" {
   type    = string
   default = "CodePipelineExecutionRole"
 }
+
+variable "base_image" {
+  type = string
+  default = "gdscyber/cyber-security-cd-base-image:latest"
+}

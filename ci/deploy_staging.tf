@@ -4,7 +4,7 @@ module "codebuild-terraform-staging" {
   deployment_account_id       = var.pipeline_account
   deployment_role_name        = var.pipeline_role_name
   terraform_directory         = "terraform"
-  codebuild_image             = "gdscyber/cyber-security-cd-base-image:latest"
+  codebuild_image             = var.base_image
   pipeline_name               = var.pipeline_name
   environment                 = "test"
   docker_hub_credentials      = var.docker_hub_credentials
