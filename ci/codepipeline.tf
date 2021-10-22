@@ -251,11 +251,11 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
     name = "UpdatePipeline"
 
     action {
-      name = "UpdatePipeline"
-      category = "Build"
-      owner = "AWS"
-      provider = "CodeBuild"
-      version = "1"
+      name            = "UpdatePipeline"
+      category        = "Build"
+      owner           = "AWS"
+      provider        = "CodeBuild"
+      version         = "1"
       input_artifacts = ["paas_csls_splunk_broker"]
 
       configuration = {

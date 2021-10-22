@@ -73,6 +73,6 @@ variable "pipeline_role_name" {
 }
 
 variable "base_image" {
-  type = string
+  type    = string
   default = "gdscyber/cyber-security-cd-base-image:latest"
 }
