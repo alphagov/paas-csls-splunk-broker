@@ -173,7 +173,7 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
           [
             {
               "name" : "TF_VAR_target_deployer_role_arn",
-              "value" : "arn:aws:iam::103495720024:role/CodePipelineDeployerRole_885513274347"
+              "value" : "arn:aws:iam::885513274347:role/CodePipelineDeployerRole_885513274347"
             },
             {
               "name" : "TF_VAR_target_zone_name",
