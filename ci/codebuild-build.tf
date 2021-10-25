@@ -46,15 +46,6 @@ resource "aws_codebuild_project" "codebuild_build" {
       value = "noninteractive"
     }
 
-    #environment_variable {
-    #    name = "CF_DOCKER_USERNAME"
-    #    value = local.docker_hub_username
-    #}
-
-    #environment_variable {
-    #    name = "CF_DOCKER_PASSWORD"
-    #    value = local.docker_hub_password
-    #}
   }
   source {
     type      = "CODEPIPELINE"
