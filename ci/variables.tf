@@ -14,8 +14,8 @@ variable "docker_hub_credentials" {
 }
 
 variable "pipeline_account" {
-  type    = number
-  default = 670214072732
+  type    = string
+  default = "670214072732"
 }
 
 variable "pipeline_role_name" {
