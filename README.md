@@ -3,7 +3,9 @@
 ## Overview
 
 csls-splunk-broker allows GOV.UK PaaS tenants to ship/store their application logs
-in Splunk managed by the GDS Cyber Security Team.
+in Splunk managed by the GDS Cyber Security Team. 
+
+PLEASE NOTE: This is only available to GOV.UK PaaS tenants in the Cabinet Office/Government Digital Service.
 
 ## Documentation
 
