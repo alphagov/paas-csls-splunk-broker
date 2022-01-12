@@ -3,7 +3,7 @@
 ## Overview
 
 This guidance is for GOV.UK PaaS tenants who want to ship their application
-logs to the GDS Cyber Security managed Splunk service.
+logs to the GDS Cyber Security managed Splunk service. PLEASE NOTE: This is only available to GOV.UK PaaS tenants in the Cabinet Office/Government Digital Service.
 
 ## Setting up the Splunk service
 
