@@ -18,7 +18,8 @@ For more details about it works, architecture and implementation visit the
 
 The components ([Broker][broker] and [Adapter][adapter] are deployed to AWS
 Lambda continuously deployed from this repository by the  pipeline in the
-[cybersecurity-tools concourse][pipeline] to the `security-cls` AWS account.
+\# **TODO FIGURE OUT WHICH PIPELINE THIS IS BEING DEPLOYED FROM AND WHICH
+AWS ACCOUNT IT'S GOING INTO** \#
 
 The [Stub][stub] component (an application that generates log load for the
 end-to-end test) is deployed to the `cyber-sec-sandbox` space in the
