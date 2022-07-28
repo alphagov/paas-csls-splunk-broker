@@ -17,9 +17,10 @@ For more details about it works, architecture and implementation visit the
 --------- pic of deployment layout
 
 The components ([Broker][broker] and [Adapter][adapter] are deployed to AWS
-Lambda continuously deployed from this repository by the  pipeline in the
-\# **TODO FIGURE OUT WHICH PIPELINE THIS IS BEING DEPLOYED FROM AND WHICH
-AWS ACCOUNT IT'S GOING INTO** \#
+Lambda continuously deployed from this repository by the
+`paas-csls-splunk-broker` pipeline in the 670214072732 (Cyber Security Build)
+AWS account. The Terraform defining this pipeline can be found in the [ci][ci]
+directory.
 
 The [Stub][stub] component (an application that generates log load for the
 end-to-end test) is deployed to the `cyber-sec-sandbox` space in the
@@ -76,12 +77,11 @@ The pipeline process is generally:
 * runs an e2e test against it
 * deploys the production instance of the system in the `security-cls` AWS account
 
-You shouldn't need to, but you can manually set the deployment pipeline using fly:
+You shouldn't need to, but you can manually deploy the pipeline with Terraform:
 
 ```
-fly -t cd-cybersecurity-tools set-pipeline \
-	-p csls-splunk-broker \
-	-c ./ci/pipeline.yml
+cd ci
+aws-vault exec cst-build -- terraform apply
 ```
 
 ## Development
@@ -115,6 +115,7 @@ The terraform that deploys all this can be found in the [terraform directory][te
 The pipeline currently deploys these components into the `cyber-sec-sandbox`
 space of the `gds-security` org on GOV.UK PaaS.
 
+**TODO: how do you run the E2E tests without Concourse?**  
 To run the e2e tests you need a full test deployment of the stub, broker and
 adapater, but if you want to run a test again an existing deployment you can do
 this via concourse:
@@ -137,3 +138,4 @@ fly -t cd-cybersecurity-tools execute \
 [cmd]: ../cmd/
 [go]: https://golang.org/
 [go-mod]: https://blog.golang.org/using-go-modules
+[ci]: ../ci
