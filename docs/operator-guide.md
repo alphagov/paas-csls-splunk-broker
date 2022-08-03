@@ -115,7 +115,6 @@ The terraform that deploys all this can be found in the [terraform directory][te
 The pipeline currently deploys these components into the `cyber-sec-sandbox`
 space of the `gds-security` org on GOV.UK PaaS.
 
-**TODO: how do you run the E2E tests without Concourse?**  
 To run the e2e tests you need a full test deployment of the stub, broker and
 adapater, but if you want to run a test again an existing deployment you can do
 this by running a script(note that you have to pass in AWS credentials for the 
