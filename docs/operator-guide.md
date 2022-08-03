@@ -46,7 +46,7 @@ cf create-service-broker splunk USERNAME PASSWORD URL
 
 Where:
 
-* `USERNAME` and `PASSWORD` are secrets that are stored in [the pipeline][pipeline]
+* `USERNAME` and `PASSWORD` are SSM parameters that are stored in the Cyber Build AWS account
 * `URL` is the production broker URL that can be obtained by observing the output from the deploy job in [the pipeline][pipeline]
 
 ## Enabling service access
@@ -124,7 +124,7 @@ build account, e.g. via `aws-vault`)
 aws-vault exec cst-build -- ./ci/run-ci-test.sh 
 ```
 
-[pipeline]: https://cd.gds-reliability.engineering/teams/cybersecurity-tools/pipelines/csls-splunk-broker
+[pipeline]: https://eu-west-2.console.aws.amazon.com/codesuite/codepipeline/pipelines/paas-csls-splunk-broker
 [terraform]: ../terraform
 [broker]: ../cmd/broker/README.md
 [stub]: ../cmd/stub/README.md
