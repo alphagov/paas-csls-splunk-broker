@@ -118,13 +118,11 @@ space of the `gds-security` org on GOV.UK PaaS.
 **TODO: how do you run the E2E tests without Concourse?**  
 To run the e2e tests you need a full test deployment of the stub, broker and
 adapater, but if you want to run a test again an existing deployment you can do
-this via concourse:
+this by running a script(note that you have to pass in AWS credentials for the 
+build account, e.g. via `aws-vault`)
 
 ```
-fly -t cd-cybersecurity-tools execute \
-	-c ./ci/test.yml \
-	-i src=.. \
-	--var stub-url=https://test-csls-stub.cloudapps.digital
+aws-vault exec cst-build -- ./ci/run-ci-test.sh 
 ```
 
 [pipeline]: https://cd.gds-reliability.engineering/teams/cybersecurity-tools/pipelines/csls-splunk-broker
