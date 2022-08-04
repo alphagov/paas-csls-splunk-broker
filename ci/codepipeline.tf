@@ -96,7 +96,7 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
             },
             {
               "name" : "TF_VAR_csls_stream_name",
-              "value" : "csls_data_stream_prod"
+              "value" : "csls_data_stream_prodpython"
             },
             {
               "name" : "TF_VAR_csls_broker_username",
@@ -189,7 +189,7 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
             },
             {
               "name" : "TF_VAR_csls_stream_name",
-              "value" : "csls_data_stream_prod"
+              "value" : "csls_data_stream_prodpython"
             },
             {
               "name" : "TF_VAR_csls_broker_username",
