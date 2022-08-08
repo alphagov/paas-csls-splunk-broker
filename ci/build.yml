@@ -4,7 +4,7 @@ image_resource:
   type: registry-image
   source:
     repository: golang
-    tag: 1.13
+    tag: 1.18
 params:
   CGO_ENABLE: "0"
   GOOS: "linux"

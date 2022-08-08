@@ -2,3 +2,4 @@
 *.coverprofile
 vendor/
 **/.terraform/*
+/.idea
