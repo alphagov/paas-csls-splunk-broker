@@ -61,14 +61,17 @@ variable "csls_broker_password" {
 variable "adapter_zip_path" {
   type        = string
   description = "path to a zip of the compiled adapter application"
+  default     = "adapter.zip"
 }
 
 variable "broker_zip_path" {
   type        = string
   description = "path to a zip of the compiled broker application"
+  default     = "broker.zip"
 }
 
 variable "stub_zip_path" {
   type        = string
   description = "path to a zip of the compiled stub application"
+  default     = "stub.zip"
 }
