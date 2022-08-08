@@ -5,7 +5,7 @@ import (
 
 	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls"
 	"github.com/alphagov/paas-csls-splunk-broker/pkg/csls/cslsfakes"
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
 
