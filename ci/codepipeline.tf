@@ -122,18 +122,6 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
               "name" : "TF_VAR_cf_space",
               "value" : "cyber-sec-sandbox"
             },
-            {
-              "name" : "TF_VAR_adapter_zip_path",
-              "value" : "adapter.zip"
-            },
-            {
-              "name" : "TF_VAR_broker_zip_path",
-              "value" : "broker.zip"
-            },
-            {
-              "name" : "TF_VAR_stub_zip_path",
-              "value" : "stub.zip"
-            },
           ]
         )
       }
@@ -214,18 +202,6 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
             {
               "name" : "TF_VAR_cf_space",
               "value" : "cyber-sec-sandbox"
-            },
-            {
-              "name" : "TF_VAR_adapter_zip_path",
-              "value" : "adapter.zip"
-            },
-            {
-              "name" : "TF_VAR_broker_zip_path",
-              "value" : "broker.zip"
-            },
-            {
-              "name" : "TF_VAR_stub_zip_path",
-              "value" : "stub.zip"
             },
           ]
         )
