@@ -16,7 +16,7 @@ resource "aws_codebuild_project" "codebuild_build" {
 
   environment {
     compute_type                = "BUILD_GENERAL1_SMALL"
-    image                       = "golang:1.13"
+    image                       = "golang:1.18"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "SERVICE_ROLE"
     privileged_mode             = false
