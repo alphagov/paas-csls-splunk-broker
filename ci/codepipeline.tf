@@ -127,19 +127,19 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
       }
     }
 
-    action {
-      name            = "EndToEndTestStaging"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      run_order       = 2
-      input_artifacts = ["tech_ops"]
+    #action {
+    #  name            = "EndToEndTestStaging"
+    #  category        = "Test"
+    #  owner           = "AWS"
+    #  provider        = "CodeBuild"
+    #  version         = "1"
+    #  run_order       = 2
+    #  input_artifacts = ["tech_ops"]
 
-      configuration = {
-        ProjectName = aws_codebuild_project.codebuild_staging_test.name
-      }
-    }
+    #  configuration = {
+    #    ProjectName = aws_codebuild_project.codebuild_staging_test.name
+    #  }
+    #}
   }
 
   stage {
@@ -208,19 +208,19 @@ resource "aws_codepipeline" "paas-csls-splunk-broker" {
       }
     }
 
-    action {
-      name            = "EndToEndTestProd"
-      category        = "Test"
-      owner           = "AWS"
-      provider        = "CodeBuild"
-      version         = "1"
-      run_order       = 2
-      input_artifacts = ["tech_ops"]
+    #action {
+    #  name            = "EndToEndTestProd"
+    #  category        = "Test"
+    #  owner           = "AWS"
+    #  provider        = "CodeBuild"
+    #  version         = "1"
+    #  run_order       = 2
+    #  input_artifacts = ["tech_ops"]
 
-      configuration = {
-        ProjectName = aws_codebuild_project.codebuild_prod.name
-      }
-    }
+    #  configuration = {
+    #    ProjectName = aws_codebuild_project.codebuild_prod.name
+    #  }
+    #}
   }
 
   stage {
